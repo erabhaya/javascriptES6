@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>test</title>
+  </head>
+  <body>
+    <h1>Task 1</h1>
+    <div id="money"></div>
+
+    <h1>Task 2</h1>
+    <div id="tasktwo"></div>
+
+    <h1>Task 3</h1>
+    <div id="taskthree"></div>
+    <h2>print whole values in p tag</h2>
+    <div>
+      <p id="p"></p>
+      <p id="p1"></p>
+      <p id="p2"></p>
+      <p id="p3"></p>
+    </div>
+
+    <h1>Task 4</h1>
+    <div id="taskfour"></div>
+
+    <h1>Task 5</h1>
+    <div id="taskfive"></div>
+
+    <h1>Task 6</h1>
+    <div id="tasksix"></div>
+
+    <h1>Task 7</h1>
+    <div id="taskseven"></div>
+
+    <h1>Task 8</h1>
+    <input type="number" id="in" />
+    <button onclick="func()" type="submit">Sumbit</button>
+    <div id="taskeight"></div>
+
+    <h1>Task 9</h1>
+    <div id="tasknine"></div>
+
+    <h1>Task 10</h1>
+    <div id="taskten"></div>
+
+    <h1>Task 11</h1>
+    <div id="taskeleven">
+      <p id="one11"></p>
+      <p id="one12"></p>
+      <p id="one13"></p>
+    </div>
+
+    <h1>Task 12</h1>
+    <p id="tasktwelve"></p>
+
+    <script>
+      const companies = [
+        { name: "Samsung", category: "Electronics", start: 1981, end: 2004 },
+        { name: "Nokia", category: "Mobile", start: 1992, end: 2008 },
+        { name: "Apple", category: "Mobile", start: 1999, end: 2007 },
+        { name: "One Plus", category: "Electronics", start: 1989, end: 2010 },
+        { name: "Oppo", category: "Mobile", start: 2009, end: 2014 },
+        { name: "Vivo", category: "Mobile", start: 1987, end: 2010 },
+        { name: "Motorola", category: "Electronics", start: 1986, end: 1996 },
+        { name: "Panasonic", category: "Electronics", start: 2011, end: 2016 },
+      ];
+
+      const ages = [33, 12, 20, 16, 5, 54, 21, 44, 61, 13, 15, 45, 25, 64, 32];
+
+      const person = {
+        name: "Costas",
+        address: {
+          street: "Lalaland 12",
+        },
+      };
+
+      var list = "<table border='1|1'>";
+      list += "<tr><th>NAME</th></tr>";
+      companies.forEach((item, index) => {
+        list += "<tr>";
+        list += "<td>" + `${item.name}` + "</td>";
+        list += "</tr>";
+      });
+      list += "</table>";
+      document.getElementById("money").innerHTML = list;
+
+      //break1
+      var plist = "<table border='1|1'>";
+      plist += "<tr><th>NAME</th></tr>";
+      companies.forEach((item, index) => {
+        var years = `${item.start}`;
+
+        if (years > 1987) {
+          plist += "<tr>";
+          plist += "<td>" + `${item.name}` + "</td>";
+          plist += "</tr>";
+          // console.log(list);
+        }
+      });
+      plist += "</table>";
+      document.getElementById("tasktwo").innerHTML = plist;
+
+      //break2
+      var mlist = "<table border='1|1'>";
+
+      mlist += "<tr><th>NAME</th></tr>";
+
+      companies.forEach((item, index) => {
+        var mob = `${item.category}`;
+        if (mob == "Mobile") {
+          mlist += "<tr>";
+          mlist += "<td>" + `${item.name}` + "</td>";
+          mlist += "<td>" + `${item.start + 1}` + "</td>";
+          mlist += "</tr>";
+        }
+      });
+      mlist += "</table>";
+      document.getElementById("taskthree").innerHTML = mlist;
+
+      var p = " names :";
+      var p1 = " category :";
+      var p2 = "start : ";
+      var p3 = "end : ";
+
+      // p1 += " ";
+      companies.forEach((item, index) => {
+        p += `${item.name}`;
+        p1 += `${item.category}`;
+        p2 += `${item.start}`;
+        p3 += `${item.end}`;
+      });
+      document.getElementById("p").innerHTML = p;
+      document.getElementById("p1").innerHTML = p1;
+      document.getElementById("p2").innerHTML = p2;
+      document.getElementById("p3").innerHTML = p3;
+
+      //break3
+
+      var slist;
+      var line = [];
+      companies.forEach((item, index) => {
+        line.push(item.end);
+      });
+
+      // console.log(line);
+      line.sort();
+      document.getElementById("taskfour").innerHTML = line;
+
+      //break4
+
+      let ascN = ages.sort((f, s) => s - f);
+      // console.log(ascN);
+      document.getElementById("taskfive").innerHTML = ascN;
+
+      //break5
+
+      const sum = ages.reduce((a, b) => a + b, 0);
+      // console.log(sum);
+      document.getElementById("tasksix").innerHTML = "Sum of Ages is : " + sum;
+
+      //break6
+      var object = {
+        name: "Samsung",
+        category: "Electronics",
+      };
+      //method
+      function print() {
+        const { name, category } = object;
+        document.getElementById("taskseven").innerHTML =
+          "name of company[0] is " + name;
+        // console.log(name);
+        return `${name}`;
+      }
+      print();
+
+      //break7
+      var total = 0;
+      function func() {
+        var inp = document.getElementById("in").value;
+        num = parseInt(inp);
+        total = total + num;
+        document.getElementById("taskeight").innerHTML =
+          "sum of numbers is " + total;
+      }
+
+      //break8
+
+      function unkown(person, ...msg) {
+        msg.forEach((arg) => {
+          //  document.getElementById("tasknine").innerHTML=document.write(person, 'says', arg);
+          //  console.log(person, 'says', arg);
+        });
+      }
+      unkown("abhay", "babashiv", "brahmand");
+
+      //break9
+
+      obj = { name: "abhay", street: "arjunganj", age: "25" };
+      let street = obj.street;
+      console.log(street);
+      document.getElementById("taskten").innerHTML = street;
+
+      //break10
+      var n = 0;
+
+      function increment() {
+        n++;
+        return n;
+      }
+      var z = increment();
+      var y = increment();
+      var x = increment();
+      document.getElementById("one11").innerHTML = z;
+      document.getElementById("one12").innerHTML = y;
+      document.getElementById("one13").innerHTML = x;
+
+      //break11
+      function arraytoobj() {
+        const url = "https://www.w3schools.com/quiztest/quiztest.asp?qtest=JS,";
+        const pathname = new URL(url).pathname;
+
+        var words = pathname.split("/");
+        console.log(words);
+        const obj = { path1: "quiztest", path2: "quiztest.asp" };
+        console.log(obj);
+        return obj;
+      }
+      arraytoobj();
+    </script>
+  </body>
+</html>
